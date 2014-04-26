@@ -38,7 +38,7 @@
 - (void)prepareLayerHierarchyForAnimation
 {
     UIImage* currentViewImage = [UIImage imageNamed:@"a.jpg"];//[self imageFromView:self.currentView];
-    UIImage* nextViewImage = [UIImage imageNamed:@"b.jpg"];//[self imageFromView:self.nextView];
+    UIImage* nextViewImage = [UIImage imageNamed:@"b.jpg"];//[self imageFromView:self.nextView];//this is test
     
     float animationAngle;
     [self.currentView removeFromSuperview];
