@@ -7,15 +7,21 @@
 //
 
 #import "TransitionAnimationHelper.h"
+#import <QuartzCore/QuartzCore.h>
+#import "FolderAnimation.h"
+#import "AccordionAnimation.h"
+
 
 @interface TransitionAnimationHelper()
 {
     UIView* _container;
-    UIImageView* _currentView;
-    UIImageView* _nextView;
+    UIView* _currentView;
+    UIView* _nextView;
+    
 }
 - (void)performFolderAnimation;
 - (void)performAccordionAnimation;
+- (UIImage*)getImageFromView:(UIView*)view;
 
 @end
 
@@ -31,7 +37,7 @@
     return self;
 }
 
-- (void)performAnimationWithContainer:(UIView *)containerView withCurrentView:(UIImageView *)currentView withNextView:(UIImageView *)nextView
+- (void)performAnimationWithContainer:(UIView *)containerView withCurrentView:(UIView *)currentView withNextView:(UIView *)nextView
 {
     _container = containerView;
     _currentView = currentView;
@@ -51,12 +57,26 @@
 
 - (void)performFolderAnimation
 {
-    
+    FolderAnimation* folderAnimation = [[FolderAnimation alloc] init];
+    [self setUpParamForAnimation:folderAnimation];
+    [folderAnimation prepareLayerHierarchyForAnimation];
+    [folderAnimation performAnimation];
 }
 
 - (void)performAccordionAnimation
 {
-    
+    AccordionAnimation* accordionAnimation = [[AccordionAnimation alloc] init];
+    [self setUpParamForAnimation:accordionAnimation];
+    [accordionAnimation prepareLayerHierarchyForAnimation];
+    [accordionAnimation performAnimation];
 }
 
+- (void)setUpParamForAnimation:(CustomAnimation*)animation
+{
+    animation.containerView = _container;
+    animation.currentView = _currentView;
+    animation.nextView = _nextView;
+    animation.duration = self.animationDuration;
+    animation.animationDirection = self.animationDirection;
+}
 @end

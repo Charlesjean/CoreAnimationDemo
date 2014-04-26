@@ -29,8 +29,8 @@ typedef NS_ENUM(int, AnimationType)
               withDirection:(Direction)direction;
 
 - (void)performAnimationWithContainer:(UIView*)containerView
-                      withCurrentView:(UIImageView*)currentView
-                         withNextView:(UIImageView*)nextView;
+                      withCurrentView:(UIView*)currentView
+                         withNextView:(UIView*)nextView;
 
 
 @end

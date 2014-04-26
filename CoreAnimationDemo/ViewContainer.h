@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewContainer : UIView
-
+@property (nonatomic, strong)UIImageView* firstImageView;
+@property (nonatomic, strong)UIImageView* secondImageView;
 @end
