@@ -1,11 +1,10 @@
 //
 //  ViewController.m
-//  CoreAnimationDemo
+//  CoreAnimationTest2
 //
-//  Created by Chen, Duanjin on 4/19/14.
-//  Copyright (c) 2014 dj-chen. All rights reserved.
+//  Created by Chen Duanjin on 4/26/14.
+//  Copyright (c) 2014 iLife. All rights reserved.
 //
-
 #import "ViewController.h"
 #import "ViewContainer.h"
 #import "TransitionAnimationHelper.h"
@@ -27,7 +26,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.containerView1 = [[ViewContainer alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    self.containerView1 = [[ViewContainer alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
     [self.view addSubview:self.containerView1];
     UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -44,17 +43,19 @@
 
 - (void)handleSwipe:(UISwipeGestureRecognizer*)gesture
 {
+    float duration = 5.0;
     if (gesture.direction & UISwipeGestureRecognizerDirectionLeft) {
-        animationHelper = [[TransitionAnimationHelper alloc] initWithAnimationType:AnimationType_Folder withDuration:1.0 withDirection:AnimationDirection_Left];
-        [animationHelper performAnimationWithContainer:self.containerView1 withCurrentView:self.containerView1.firstImageView withNextView:self.containerView1.secondImageView];
+        animationHelper = [[TransitionAnimationHelper alloc] initWithAnimationType:AnimationType_Folder withDuration:duration withDirection:AnimationDirection_Left];
+        [animationHelper performAnimationWithContainer:self.containerView1 withCurrentView:self.containerView1.currentView withNextView:self.containerView1.nextView];
         NSLog(@"Swipe Left");
     }
     if (gesture.direction & UISwipeGestureRecognizerDirectionRight){
-        animationHelper = [[TransitionAnimationHelper alloc] initWithAnimationType:AnimationType_Folder withDuration:1.0 withDirection:AnimationDirection_Right];
-        [animationHelper performAnimationWithContainer:self.containerView1 withCurrentView:self.containerView1.firstImageView withNextView:self.containerView1.secondImageView];
+        animationHelper = [[TransitionAnimationHelper alloc] initWithAnimationType:AnimationType_Folder withDuration:duration withDirection:AnimationDirection_Right];
+        [animationHelper performAnimationWithContainer:self.containerView1 withCurrentView:self.containerView1.currentView withNextView:self.containerView1.nextView];
         NSLog(@"Swipe Right");
     }
-        
+    
+    [self.containerView1 switchView];
 }
 - (NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskLandscape;

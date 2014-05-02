@@ -11,4 +11,8 @@
 @interface ViewContainer : UIView
 @property (nonatomic, strong)UIImageView* firstImageView;
 @property (nonatomic, strong)UIImageView* secondImageView;
+@property (nonatomic, weak)UIImageView* currentView;
+@property (nonatomic, weak)UIImageView* nextView;
+
+- (void)switchView;
 @end

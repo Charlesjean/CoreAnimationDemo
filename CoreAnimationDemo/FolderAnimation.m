@@ -37,8 +37,8 @@
 
 - (void)prepareLayerHierarchyForAnimation
 {
-    UIImage* currentViewImage = [UIImage imageNamed:@"a.jpg"];//[self imageFromView:self.currentView];
-    UIImage* nextViewImage = [UIImage imageNamed:@"b.jpg"];//[self imageFromView:self.nextView];//this is test
+    UIImage* currentViewImage = [(UIImageView*)self.currentView image];
+    UIImage* nextViewImage = [(UIImageView*) self.nextView image];
     
     float animationAngle;
     [self.currentView removeFromSuperview];
@@ -133,7 +133,7 @@
     transform = CATransform3DRotate(transform,  direction * M_PI, 0, 1, 0);
     transform.m34 = direction * 1.0/1000;
     animation.toValue = [NSValue valueWithCATransform3D:transform];
-    animation.duration = 2.0;
+    animation.duration = self.duration;
     [animationLayer addAnimation:animation forKey:Nil];
 }
 

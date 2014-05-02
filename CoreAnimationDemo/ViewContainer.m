@@ -28,9 +28,18 @@
         [self addSubview:self.firstImageView];
         self.firstImageView.clipsToBounds = YES;
         self.secondImageView.clipsToBounds = YES;
-        
+        self.currentView = self.firstImageView;
+        self.nextView = self.secondImageView;
     }
     return self;
 }
+
+- (void)switchView
+{
+    UIImageView* view = self.currentView;
+    self.currentView = self.nextView;
+    self.nextView = view;
+}
+
 
 @end

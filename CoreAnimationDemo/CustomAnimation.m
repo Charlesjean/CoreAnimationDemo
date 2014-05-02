@@ -12,13 +12,13 @@
 
 - (UIImage *)imageFromView:(UIView *)view
 {
-    CGColorRef color = view.layer.backgroundColor;
-    [view.layer setBackgroundColor:[UIColor whiteColor].CGColor];
+    //CGColorRef color = view.layer.backgroundColor;
+    //[view.layer setBackgroundColor:[UIColor whiteColor].CGColor];
     UIGraphicsBeginImageContext(view.bounds.size);
     [view.layer drawInContext:UIGraphicsGetCurrentContext()];
     UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    [view.layer setBackgroundColor:color];
+    //[view.layer setBackgroundColor:color];
     return image;
 }
 @end
