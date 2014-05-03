@@ -139,6 +139,9 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    [animationLayer removeFromSuperlayer];
+    [currentViewHalfLayer removeFromSuperlayer];
+    [nextViewHalfLayer removeFromSuperlayer];
     [self.containerView addSubview:self.nextView];
 }
 @end
